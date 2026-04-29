@@ -58,14 +58,6 @@ def check_fails():
     return check
 
 
-@pytest.fixture
-def check_fails_2():
-    def check(exception):
-        return False
-
-    return check
-
-
 #####
 # Warnings
 #####

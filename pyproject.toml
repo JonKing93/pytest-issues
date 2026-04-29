@@ -67,6 +67,7 @@ include = "poe-tasks.toml"
 
 [tool.coverage.report]
 exclude_also = ["if TYPE_CHECKING"]
+omit = ["src/pytest_issues/typing.py"]
 
 [tool.ruff]
 lint.select = [
