@@ -66,6 +66,18 @@ jobs:
               uses: coverallsapp/github-action@v2.3.6
               with:
                 file: coverage.xml
+                parallel: true
+                flag-name: python-${{ matrix.python-version }}
+
+    coverage:
+        name: Finalize coverage reports on coveralls
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Finalize coveralls reports
+              uses: coverallsapp/github-action@v2.3.6
+              with:
+                parallel-finished: true
 
     pre-commit:
         name: Pre-commit catch-all
