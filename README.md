@@ -16,6 +16,7 @@ Some motivations for the package include:
 [pytest.raises]: https://docs.pytest.org/en/stable/how-to/assert.html#assertions-about-expected-exceptions
 [test anatomy]: https://docs.pytest.org/en/stable/explanation/anatomy.html
 
+
 ## Examples
 
 Require a test to raise an expected exception:
@@ -107,6 +108,11 @@ def test():
 ```
 
 
+## Documentation
+
+You can find more detailed examples, a user guide, and a comprehensive API at the [project documentation](https://pytest-issues.readthedocs.io).
+
+
 ## Installation
 
 **Requires**: Python 3.11+, pytest 8.4+
@@ -115,6 +121,11 @@ def test():
 pip install pytest-issues
 ```
 
-## Documentation
+## Contributing / Feedback
 
-You can find more detailed examples, a user guide, and a comprehensive API at the [project documentation](https://pytest-issues.readthedocs.io).
+We welcome contributions and feedback! To ask a question, suggest a feature, or report a bug, please open a new thread on our [Issues tracker](https://github.com/JonKing93/pytest-issues/issues). If you plan to contribute code, please read the contribution guide in the docs.
+
+
+## License
+
+MIT
