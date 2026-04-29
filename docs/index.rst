@@ -200,4 +200,5 @@ When using ``@raises``, the action code remains at the same indent level, regard
     Quickstart <quickstart>
     User Guide <user-guide>
     API Reference <api>
+    Contributing <contributing>
     Release Notes <release-notes>

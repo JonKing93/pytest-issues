@@ -95,7 +95,7 @@ sequence = [
 [tool.poe.tasks.docs]
 help = "Deletes and then rebuilds the documentation"
 sequence = [
-  { ref = "_rmtree public" },
+  { ref = "_rmtree docs/_build" },
   { cmd = "sphinx-build -qa docs docs/_build" },
 ]
 

@@ -999,7 +999,7 @@ wheels = [
 
 [[package]]
 name = "pytest-issues"
-version = "1.0.0.dev0"
+version = "1.0.0.dev1"
 source = { editable = "." }
 dependencies = [
     { name = "pytest" },
