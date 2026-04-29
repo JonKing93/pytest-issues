@@ -1,4 +1,4 @@
-# pytest-error
+# pytest-issues
 
 A decorator for testing exceptions with [pytest](https://docs.pytest.org/en/stable/index.html).
 
