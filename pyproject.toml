@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "pytest-issues"
-version = "1.0.0.dev1"
+version = "1.0.0"
 description = "Decorators for pytest tests that should issue exceptions or warnings"
 license = "MIT"
 readme = "README.md"
