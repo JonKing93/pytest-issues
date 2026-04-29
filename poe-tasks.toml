@@ -1,0 +1,104 @@
+#####
+# Dev Environment
+#####
+
+[tool.poe.tasks.setup]
+help = "Sets up a new developer environment and installs pre-commit hooks"
+default_item_type = "cmd"
+sequence = [
+  "uv sync --frozen --all-groups",
+  "uv tool install pre-commit --with pre-commit-uv --force-reinstall",
+  "pre-commit install",
+  "pre-commit run --all-files",
+]
+
+
+[tool.poe.tasks.sync]
+help = "Syncs developer environment"
+cmd = "uv sync --all-groups"
+
+
+#####
+# Utilities
+#####
+
+[tool.poe.tasks._rmtree]
+help = "Deletes a folder and its contents"
+expr = "shutil.rmtree(sys.argv[1]) if pathlib.Path(sys.argv[1]).exists() else None"
+imports = ["shutil", "pathlib"]
+
+[tool.poe.tasks._delete]
+help = "Deletes a file"
+expr = "pathlib.Path(sys.argv[1]).unlink() if pathlib.Path(sys.argv[1]).exists() else None"
+imports = ["pathlib"]
+
+[tool.poe.tasks._open]
+help = "Opens an HTML index page in a browser"
+expr = "webbrowser.open(str(pathlib.Path.cwd() / sys.argv[1] / 'index.html'))"
+imports = ["webbrowser", "pathlib"]
+
+
+#####
+# Security
+#####
+
+[tool.poe.tasks.audit]
+help = "Checks package dependencies for security issues"
+cmd = "pip-audit ."
+
+
+#####
+# Lint
+#####
+
+[tool.poe.tasks.format]
+help = "Formats the code and its tests"
+sequence = [
+  "ruff check src tests --select I --fix",
+  "ruff format src tests",
+]
+default_item_type = "cmd"
+
+[tool.poe.tasks.lint]
+help = "Checks the code for potential issues"
+cmd = "ruff check src tests"
+
+
+#####
+# Test
+#####
+
+[tool.poe.tasks.tests]
+help = "Runs the tests and requires 100% coverage"
+sequence = [
+  { cmd = "pytest tests --cov=src --cov=tests --cov-fail-under=100 --cov-report xml:coverage.xml" },
+  { ref = "coverage" },
+]
+
+[tool.poe.tasks.coverage]
+help = "Prints the coverage report for the tests"
+cmd = "coverage report"
+
+[tool.poe.tasks.htmlcov]
+help = "Builds an HTML coverage report and opens in browser"
+sequence = [
+  { ref = "_rmtree htmlcov" },
+  { cmd = "coverage html --skip-covered" },
+  { ref = "_open htmlcov" },
+]
+
+
+#####
+# Docs
+#####
+
+[tool.poe.tasks.docs]
+help = "Deletes and then rebuilds the documentation"
+sequence = [
+  { ref = "_rmtree docs/_build" },
+  { cmd = "sphinx-build -qa docs docs/_build" },
+]
+
+[tool.poe.tasks.open-docs]
+help = "Opens the docs in a webbrowser"
+ref = "_open docs/_build"

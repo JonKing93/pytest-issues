@@ -1,0 +1,23 @@
+# Caches
+__pycache__
+.pytest_cache
+.ruff_cache
+
+# Environment
+.venv
+
+# Packaging
+dist
+
+# Coverage reports
+.coverage
+htmlcov
+coverage.xml
+coverage.json
+coverage.lcov
+
+# Documentation builds
+docs/_build
+
+# IDEs
+.vscode

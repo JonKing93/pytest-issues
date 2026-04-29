@@ -1,0 +1,95 @@
+name: Review
+
+on:
+  push:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+  pull_request:
+
+
+jobs:
+    audit:
+        name: Security Audit
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v8.1.0
+              with:
+                enable-cache: true
+
+            - name: Run pip-audit
+              run: uv run --group tooling --group security poe audit
+
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v8.1.0
+              with:
+                enable-cache: true
+
+            - name: Run ruff
+              run: uv run --group tooling --group lint poe lint
+
+    test:
+        name: Test Python ${{ matrix.python-version }}
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            python-version: ['3.11', '3.12', '3.13', '3.14']
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v8.1.0
+              with:
+                enable-cache: true
+
+            - name: Install project and dependencies
+              run: uv sync --group tooling --group test
+
+            - name: Run pytest
+              run: uv run poe tests
+
+            - name: Coveralls
+              uses: coverallsapp/github-action@v2.3.6
+              with:
+                file: coverage.xml
+                parallel: true
+                flag-name: python-${{ matrix.python-version }}
+
+    coverage:
+        name: Finalize coverage reports on coveralls
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Finalize coveralls reports
+              uses: coverallsapp/github-action@v2.3.6
+              with:
+                parallel-finished: true
+
+    pre-commit:
+        name: Pre-commit catch-all
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v8.1.0
+              with:
+                enable-cache: true
+
+            - name: Run pre-commit
+              run: uv run --group hooks pre-commit run --all-files --show-diff-on-failure

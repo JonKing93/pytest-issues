@@ -1,0 +1,40 @@
+fail_fast: true
+
+repos:
+# Pre-commit: File integrity and git hygiene
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Cleanup
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-added-large-files
+      - id: check-yaml
+      # Python
+      - id: check-toml
+      - id: check-ast
+      - id: debug-statements
+      # Branch Management
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+      # Security
+      - id: detect-private-key
+
+# Ruff: Linting and Formatting
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12
+    hooks:
+      - id: ruff-check
+      - id: ruff-format
+
+# Pip-audit: Security
+-   repo: https://github.com/pypa/pip-audit
+    rev: v2.10.0
+    hooks:
+      - id: pip-audit
+
+# UV: Lock file
+-   repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.8
+    hooks:
+      - id: uv-lock

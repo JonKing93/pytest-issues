@@ -1,0 +1,89 @@
+[build-system]
+requires = ["uv-build>=0.11,<1"]
+build-backend = "uv_build"
+
+[project]
+name = "pytest-issues"
+version = "1.0.0.dev1"
+description = "Decorators for pytest tests that should issue exceptions or warnings"
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11, <4.0"
+authors = [
+    {name = "Jonathan King", email = "jonking93@gmail.com"},
+]
+maintainers = [
+    {name = "Jonathan King", email = "jonking93@gmail.com"},
+]
+keywords = [
+    "pytest",
+    "testing",
+    "exception",
+    "warning",
+    "error",
+    "error message",
+    "warning message",
+    "raises",
+    "warns",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Testing :: Unit",
+]
+dependencies = ["pytest>=8"]
+
+[dependency-groups]
+tooling = ["poethepoet"]
+hooks = ["pre-commit"]
+security = ["pip-audit"]
+lint = ["ruff"]
+test = ["pytest", "coverage", "pytest-cov"]
+docs = ["sphinx", "furo", "sphinx_design", "sphinx-copybutton"]
+release = ["twine"]
+
+[project.urls]
+repository = "https://jonking93.github.io/pytest-issues"
+documentation = "https://pytest-issues.readthedocs.io"
+
+
+#####
+# Dev Tool Configurations
+#####
+
+[tool.poe]
+executor = "uv"
+include = "poe-tasks.toml"
+
+[tool.coverage.report]
+exclude_also = ["if TYPE_CHECKING"]
+omit = ["src/pytest_issues/typing.py"]
+
+[tool.ruff]
+lint.select = [
+    "E", # pycodestyle
+    "F", # Pyflakes
+    "UP", # pyupgrade
+    "B", # flake8-bugbear
+    "SIM", # flake8-simplify
+    "I", # isort
+    "S", # bandit
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "E712", "B028"]
+
+[tool.pytest]
+filterwarnings = [
+    "ignore:A warning message with some message A.*::",
+]
