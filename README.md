@@ -1,5 +1,12 @@
 # pytest-issues
 
+[![Documentation](https://img.shields.io/badge/Documentation-Click%20Here!-blue)](https://pytest-issues.readthedocs.io)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue)](https://www.python.org/downloads)
+[![PyPI](https://img.shields.io/pypi/v/pytest-issues.svg?color=green)](https://pypi.org/project/pytest-issues/)
+[![Build Status](https://github.com/JonKing93/pytest-issues/actions/workflows/review.yml/badge.svg?branch=main)](https://github.com/JonKing93/pytest-issues/actions/workflows/review.yml?query=branch%3Amain)
+[![Coverage](https://coveralls.io/repos/github/JonKing93/pytest-issues/badge.svg?branch=main)](https://coveralls.io/github/JonKing93/pytest-issues?branch=main)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://opensource.org/license/mit)
+
 A decorator for testing exceptions with [pytest](https://docs.pytest.org/en/stable/index.html).
 
 

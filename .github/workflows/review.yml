@@ -59,6 +59,11 @@ jobs:
             - name: Run pytest
               run: uv run poe tests
 
+            - name: Coveralls
+              uses: coverallsapp/github-action@v2.3.6
+              with:
+                file: coverage.xml
+
     pre-commit:
         name: Pre-commit catch-all
         runs-on: ubuntu-latest
