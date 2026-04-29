@@ -58,3 +58,18 @@ jobs:
 
             - name: Run pytest
               run: uv run poe tests
+
+    pre-commit:
+        name: Pre-commit catch-all
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install uv
+              uses: astral-sh/setup-uv@v8.1.0
+              with:
+                enable-cache: true
+
+            - name: Run pre-commit
+              run: uv run pre-commit run --all-files --show-diff-on-failure
