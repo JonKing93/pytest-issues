@@ -44,7 +44,8 @@ classifiers = [
 dependencies = ["pytest>=8"]
 
 [dependency-groups]
-tooling = ["poethepoet", "pre-commit"]
+tooling = ["poethepoet"]
+hooks = ["pre-commit"]
 security = ["pip-audit"]
 lint = ["ruff"]
 test = ["pytest", "coverage", "pytest-cov"]

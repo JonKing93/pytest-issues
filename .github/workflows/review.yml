@@ -24,7 +24,7 @@ jobs:
                 enable-cache: true
 
             - name: Run pip-audit
-              run: uv run poe audit
+              run: uv run --group tooling --group security poe audit
 
     lint:
         name: Lint
@@ -39,7 +39,7 @@ jobs:
                 enable-cache: true
 
             - name: Run ruff
-              run: uv run poe lint
+              run: uv run --group tooling --group lint poe lint
 
     test:
         name: Test Python ${{ matrix.python-version }}
@@ -55,6 +55,9 @@ jobs:
               uses: astral-sh/setup-uv@v8.1.0
               with:
                 enable-cache: true
+
+            - name: Install project and dependencies
+              run: uv sync --group tooling --group test
 
             - name: Run pytest
               run: uv run poe tests
@@ -77,4 +80,4 @@ jobs:
                 enable-cache: true
 
             - name: Run pre-commit
-              run: uv run pre-commit run --all-files --show-diff-on-failure
+              run: uv run --group hooks pre-commit run --all-files --show-diff-on-failure
