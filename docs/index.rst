@@ -1,6 +1,23 @@
 pytest-issues
 =============
 
+.. image:: https://img.shields.io/badge/Python-3.11+-blue
+    :alt: Python
+    :target: https://www.python.org/downloads
+.. image:: https://img.shields.io/pypi/v/pytest-issues.svg?color=green
+    :alt: PyPI
+    :target: https://pypi.org/project/pytest-issues
+.. image:: https://github.com/JonKing93/pytest-issues/actions/workflows/build.yml/badge.svg?branch%3Amain
+    :alt: Build Status
+    :target: https://github.com/JonKing93/pytest-issues/actions/workflows/build.yml?query=branch%3Amain
+.. image:: https://coveralls.io/repos/github/JonKing93/pytest-issues/badge.svg?branch=main
+    :alt: Coverage
+    :target: https://coveralls.io/github/JonKing93/pytest-issues?branch=main
+.. image:: https://img.shields.io/badge/License-MIT-blue
+    :alt: License
+    :target: https://opensource.org/license/mit
+
+
 The pytest-issues package provides decorators that ensure pytest tests issue expected exceptions and warnings. The decorators are built on the `pytest.raises`_ and `pytest.warns`_ context managers, and extend their functionality to allow validation of error messages using strings. (The baseline context managers require regular expressions in order to validate error messages).
 
 
