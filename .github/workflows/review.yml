@@ -7,8 +7,8 @@ on:
       - "tests/**"
       - "pyproject.toml"
       - "uv.lock"
+      - .github/**
   pull_request:
-
 
 jobs:
     audit:
@@ -56,8 +56,11 @@ jobs:
               with:
                 enable-cache: true
 
+            - name: Remove Python version pin
+              run: rm .python-version
+
             - name: Install project and dependencies
-              run: uv sync --group tooling --group test
+              run: uv sync --python ${{ matrix.python-version }} --group tooling --group test
 
             - name: Run pytest
               run: uv run poe tests
