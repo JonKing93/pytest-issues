@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "pytest-issues"
-version = "1.0.1"
+version = "1.0.2"
 description = "Decorators for pytest tests that should issue exceptions or warnings"
 license = "MIT"
 readme = "README.md"
@@ -52,7 +52,7 @@ test = ["pytest", "coverage", "pytest-cov"]
 docs = ["sphinx", "furo", "sphinx_design", "sphinx-copybutton"]
 
 [project.urls]
-Repository = "https://jonking93.github.io/pytest-issues"
+Repository = "https://github.com/JonKing93/pytest-issues"
 Documentation = "https://pytest-issues.readthedocs.io"
 
 

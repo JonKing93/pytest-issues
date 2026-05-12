@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+1.0.2
+-----
+Update link to repository homepage in pyproject.toml
+
 1.0.1
 -----
 Improved layout of docs, added license links, fixed readme appearance on PyPI.
