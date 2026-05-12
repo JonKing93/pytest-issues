@@ -4,7 +4,6 @@ pytest-issues
 The pytest-issues package provides decorators that ensure pytest tests issue expected exceptions and warnings. The decorators are built on the `pytest.raises`_ and `pytest.warns`_ context managers, and extend their functionality to allow validation of error messages using strings. (The baseline context managers require regular expressions in order to validate error messages).
 
 
-
 Examples
 --------
 
@@ -191,14 +190,27 @@ When using ``@raises``, the action code remains at the same indent level, regard
 .. _action code: https://docs.pytest.org/en/stable/explanation/anatomy.html
 
 
-
 .. toctree::
+    :caption: Getting Started
     :hidden:
 
     Introduction <self>
-    Installation <install>
-    Quickstart <quickstart>
-    User Guide <user-guide>
-    API Reference <api>
-    Contributing <contributing>
-    Release Notes <release-notes>
+    Installation <usage/install>
+    Quickstart <usage/quickstart>
+
+.. toctree::
+    :caption: Usage
+    :hidden:
+
+    User Guide <usage/user-guide>
+    API Reference <usage/api>
+
+.. toctree::
+    :caption: Project Resources
+    :hidden:
+
+    Contributing <project/contributing>
+    Release Notes <project/release-notes>
+    License <project/license>
+    Github Repository <https://github.com/JonKing93/pytest-issues>
+    PyPI <https://pypi.org/project/pytest-issues/>

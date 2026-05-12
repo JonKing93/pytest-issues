@@ -53,8 +53,8 @@ docs = ["sphinx", "furo", "sphinx_design", "sphinx-copybutton"]
 release = ["twine"]
 
 [project.urls]
-repository = "https://jonking93.github.io/pytest-issues"
-documentation = "https://pytest-issues.readthedocs.io"
+Repository = "https://jonking93.github.io/pytest-issues"
+Documentation = "https://pytest-issues.readthedocs.io"
 
 
 #####
