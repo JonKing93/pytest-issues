@@ -22,13 +22,13 @@ repos:
 
 # Ruff: Linting and Formatting
 -   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.12
+    rev: v0.15.15
     hooks:
       - id: ruff-check
       - id: ruff-format
 
 # UV: Lock file
 -   repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.11.10
+    rev: 0.11.17
     hooks:
       - id: uv-lock
