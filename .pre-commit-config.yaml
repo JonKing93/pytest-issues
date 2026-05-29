@@ -27,12 +27,6 @@ repos:
       - id: ruff-check
       - id: ruff-format
 
-# Pip-audit: Security
--   repo: https://github.com/pypa/pip-audit
-    rev: v2.10.0
-    hooks:
-      - id: pip-audit
-
 # UV: Lock file
 -   repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.11.10

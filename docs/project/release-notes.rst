@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+1.0.3
+-----
+Update AssertionErrors to use single line messages, so that failed error messages are viewable in the pytest failed test summary.
+
 1.0.2
 -----
 Update link to repository homepage in pyproject.toml

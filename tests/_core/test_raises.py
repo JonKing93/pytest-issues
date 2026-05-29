@@ -4,7 +4,7 @@ from pytest_issues._core import raises
 
 
 def check_missing_message(error):
-    assert "Error message did not contain expected string" in str(error.value)
+    assert "Unexpected error message" in str(error.value)
 
 
 #####
@@ -202,7 +202,7 @@ class TestCheckTestRaises:
                 check_notes=False,
                 format=False,
             )
-        assert "No error messages provided" in str(error.value)
+        assert "Unspecified error message" in str(error.value)
 
     def test_disabled_message_format(_, raiser, args, kwargs):
         raises.check_test_raises(
