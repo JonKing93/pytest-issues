@@ -61,13 +61,7 @@ def check_raises(
             check_notes and message_in_notes(message, exception)
         )
         if not valid:
-            raise AssertionError(
-                f"Error message did not contain expected string."
-                f"\n\n"
-                f"**Expected string**\n{message}"
-                f"\n\n"
-                f"**Actual message**\n{raised_message}"
-            )
+            raise AssertionError(f"Unexpected error message -- {raised_message}")
     return exception
 
 
@@ -115,6 +109,4 @@ def check_test_raises(
 
     # Optionally require message checking
     if len(messages) == 0 and require_messages:
-        raise AssertionError(
-            f"No error messages provided\n\n**Raised message**\n{str(exception)}"
-        )
+        raise AssertionError(f"Unspecified error message -- {str(exception)}")
