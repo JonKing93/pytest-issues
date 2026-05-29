@@ -11,25 +11,16 @@ from pytest_issues._decorators.raises import (
 def check_missing_message(error, missing="missing message"):
     message = str(error.value)
     assert message == (
-        "Error message did not contain expected string.\n"
-        "\n"
-        "**Expected string**\n"
-        f"{missing}\n"
-        "\n"
-        "**Actual message**\n"
-        "Raises a ValueError with some message A, another message B, "
-        "and a final message C"
+        "Unexpected error message -- Raises a ValueError with "
+        "some message A, another message B, and a final message C"
     )
 
 
 def check_autofail(error):
     message = str(error.value)
     assert message == (
-        "No error messages provided\n"
-        "\n"
-        "**Raised message**\n"
-        "Raises a ValueError with some message A, another message B, "
-        "and a final message C"
+        "Unspecified error message -- Raises a ValueError with "
+        "some message A, another message B, and a final message C"
     )
 
 
@@ -223,14 +214,14 @@ class TestRaisesNoFormat:
 
         test()
 
-    def test_invalid(_, raiser, args, kwargs):
+    def test_invalid(_):
         @raises_no_format(ValueError, "{fixture1} is literal")
         def test(fixture1):
             raise ValueError(f"with formatted info on {fixture1}")
 
         with pytest.raises(AssertionError) as einfo:
             test("some fixture")
-        assert "{fixture1} is literal" in str(einfo.value)
+        assert "Unexpected error message" in str(einfo.value)
 
 
 class TestRaisesIgnoreMessage:
